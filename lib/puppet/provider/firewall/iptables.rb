@@ -21,6 +21,7 @@ Puppet::Type.type(:firewall).provide :iptables, :parent => Puppet::Provider::Fir
   has_feature :log_level
   has_feature :log_prefix
   has_feature :mark
+  has_feature :mss
   has_feature :tcp_flags
   has_feature :pkttype
   has_feature :isfragment
@@ -72,6 +73,7 @@ Puppet::Type.type(:firewall).provide :iptables, :parent => Puppet::Provider::Fir
     :log_prefix         => "--log-prefix",
     :mac_source         => ["-m mac --mac-source", "--mac-source"],
     :mask               => '--mask',
+    :mss                => '-m tcpmss --mss',
     :name               => "-m comment --comment",
     :outiface           => "-o",
     :pkttype            => "-m pkttype --pkt-type",
@@ -163,7 +165,7 @@ Puppet::Type.type(:firewall).provide :iptables, :parent => Puppet::Provider::Fir
     :dst_type, :src_type, :socket, :pkttype, :name, :ipsec_dir, :ipsec_policy,
     :state, :ctstate, :icmp, :limit, :burst, :recent, :rseconds, :reap,
     :rhitcount, :rttl, :rname, :mask, :rsource, :rdest, :ipset, :jump, :set_mss, :todest,
-    :tosource, :toports, :to, :random, :log_prefix, :log_level, :reject, :set_mark,
+    :tosource, :toports, :to, :random, :log_prefix, :log_level, :reject, :set_mark, :mss,
     :connlimit_above, :connlimit_mask, :connmark
   ]
 
