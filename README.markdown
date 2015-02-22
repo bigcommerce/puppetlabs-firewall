@@ -187,6 +187,7 @@ firewall { "999 drop all other requests":
   action => "drop",
 }
 ```
+
 ###Application-Specific Rules
 
 Puppet doesn't care where you define rules, and this means that you can place
@@ -255,6 +256,21 @@ firewall { '100 snat for network foo2':
   outiface => "eth0",
   source   => '10.1.2.0/24',
   table    => 'nat',
+}
+```
+
+You can also change the TCP MSS value for VPN client traffic:
+
+```puppet
+firewall { '110 TCPMSS for VPN clients':
+  chain     => 'FORWARD',
+  table     => 'mangle',
+  source    => '10.0.2.0/24',
+  proto     => tcp,
+  tcp_flags => 'SYN,RST SYN',
+  mss       => '1361:1541',
+  set_mss   => '1360',
+  jump      => 'TCPMSS',
 }
 ```
 
