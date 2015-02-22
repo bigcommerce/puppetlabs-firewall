@@ -88,6 +88,7 @@ Puppet::Type.type(:firewall).provide :iptables, :parent => Puppet::Provider::Fir
     :rsource            => "--rsource",
     :rttl               => "--rttl",
     :set_mark           => mark_flag,
+    :set_mss            => '--set-mss',
     :socket             => "-m socket",
     :source             => "-s",
     :sport              => ["-m multiport --sports", "--sport"],
@@ -161,7 +162,7 @@ Puppet::Type.type(:firewall).provide :iptables, :parent => Puppet::Provider::Fir
     :src_range, :dst_range, :tcp_flags, :gid, :uid, :mac_source, :sport, :dport, :port,
     :dst_type, :src_type, :socket, :pkttype, :name, :ipsec_dir, :ipsec_policy,
     :state, :ctstate, :icmp, :limit, :burst, :recent, :rseconds, :reap,
-    :rhitcount, :rttl, :rname, :mask, :rsource, :rdest, :ipset, :jump, :todest,
+    :rhitcount, :rttl, :rname, :mask, :rsource, :rdest, :ipset, :jump, :set_mss, :todest,
     :tosource, :toports, :to, :random, :log_prefix, :log_level, :reject, :set_mark,
     :connlimit_above, :connlimit_mask, :connmark
   ]
