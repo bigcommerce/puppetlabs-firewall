@@ -72,6 +72,7 @@ Puppet::Type.type(:firewall).provide :iptables, :parent => Puppet::Provider::Fir
     :log_prefix         => "--log-prefix",
     :mac_source         => ["-m mac --mac-source", "--mac-source"],
     :mask               => '--mask',
+    :match_mark         => "-m mark --mark",
     :name               => "-m comment --comment",
     :outiface           => "-o",
     :pkttype            => "-m pkttype --pkt-type",
@@ -224,7 +225,7 @@ Puppet::Type.type(:firewall).provide :iptables, :parent => Puppet::Provider::Fir
     :state, :ctstate, :icmp, :limit, :burst, :recent, :rseconds, :reap,
     :rhitcount, :rttl, :rname, :mask, :rsource, :rdest, :ipset, :jump, :todest,
     :tosource, :toports, :to, :random, :log_prefix, :log_level, :reject, :set_mark,
-    :connlimit_above, :connlimit_mask, :connmark
+    :connlimit_above, :connlimit_mask, :connmark, :match_mark
   ]
 
   def insert
